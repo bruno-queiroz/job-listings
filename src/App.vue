@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Jobs from './Jobs.vue';
 </script>
-
 <template>
-  
+  <Suspense>
+    <Jobs/>
+  </Suspense>
 </template>
 
-<style scoped>
-
-</style>
