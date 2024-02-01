@@ -1,25 +1,28 @@
 <script setup lang="ts">
 import JobTag from './JobTag.vue';
+import type { Job } from '@/utils/getJobs';
+
+defineProps<Job>()
 </script>
 
 <template>
   <article class="job-item-container">
     <div class="company-img">
-        <img src="" alt="company image">
+        <img :src="logo" alt="company image">
     </div>
     <div class="job-info">
         <div class="company-name">
-            <strong>Photosnap</strong>
-            <span class="new-job">NEW</span>
-            <span class="featured-job">FEATURED</span>
+            <strong>{{ company }}</strong>
+            <span v-if="new" class="new-job">NEW</span>
+            <span v-if="featured" class="featured-job">FEATURED</span>
         </div>
 
         <div class="job-title">
-            <h2>Senior Frontend Developer</h2>
+            <h2>{{ position }}</h2>
         </div>
 
         <div class="job-extra-info">
-            1d ago ・ full time ・ USA only
+            {{ postedAt }} ・ {{ contract }} ・ {{ location }}
         </div>
     </div>
     <div class="job-tags">
@@ -41,9 +44,12 @@ import JobTag from './JobTag.vue';
 }
 
 .company-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
+  padding: 1rem;
   height: 100px;
-  background-color: aquamarine;
   border-radius: 100%;
 }
 
