@@ -2,7 +2,9 @@
 import JobTag from './JobTag.vue';
 import type { Job } from '@/utils/getJobs';
 
-defineProps<Job>()
+const props = defineProps<Job>()
+
+const requirements = [props.role, props.level, ...props.languages, ...props.tools]
 </script>
 
 <template>
@@ -26,7 +28,9 @@ defineProps<Job>()
         </div>
     </div>
     <div class="job-tags">
-        <JobTag tag="Frontend"/>
+        <div v-for="requirement in requirements">
+          <JobTag :tag="requirement"/>
+        </div>
     </div>
   </article>
 </template>
@@ -74,6 +78,7 @@ defineProps<Job>()
   display: flex;
   align-items: center;
   justify-content: end;
+  gap: .5rem;
   flex: 1;
 }
 
