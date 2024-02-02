@@ -19,4 +19,9 @@ defineProps<{
     border: none;
     cursor: pointer;
 }
+
+.tag:hover{
+    background-color: hsl(180, 29%, 50%);
+    color: white;
+}
 </style>
