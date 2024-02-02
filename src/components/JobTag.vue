@@ -5,9 +5,9 @@ defineProps<{
 </script>
 
 <template>
-    <div class="tag">
+    <button class="tag">
         {{tag}}
-    </div>
+    </button>
 </template>
 
 <style scoped>
@@ -16,5 +16,7 @@ defineProps<{
     border-radius: 5px;
     color: hsl(180, 29%, 50%);
     background-color: hsl(180, 52%, 96%);
+    border: none;
+    cursor: pointer;
 }
 </style>
