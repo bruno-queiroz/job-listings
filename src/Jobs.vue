@@ -22,6 +22,7 @@ const addTagToFilter = (tag: string) => {
             <div v-for="filterRequirement in filterRequirements">
                 <SelectedTag :tag="filterRequirement"/>
             </div>
+            <button class="clear-filter">Clear</button>
         </div>
         <main>
             <ul>
@@ -50,12 +51,25 @@ main{
 
 .filter{
     display: flex;
-    gap: .5rem;
+    gap: .75rem;
     background-color: white;
     box-shadow: 7px 9px 16px -2px rgba(0,0,0,0.15);    
     border-radius: 5px;
     width: calc(85% - 1.50rem);
     padding: 1rem;
     margin-inline: auto;
+}
+
+.clear-filter{
+    cursor: pointer;
+    font-weight: 700;
+    background-color: transparent;
+    border: none;
+    color: hsl(180, 29%, 50%);
+    margin-left: auto;
+}
+
+.clear-filter:hover{
+    text-decoration: underline;
 }
 </style>
