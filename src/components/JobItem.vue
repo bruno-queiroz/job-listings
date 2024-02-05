@@ -2,7 +2,7 @@
 import JobTag from './JobTag.vue';
 import type { Job } from '@/utils/getJobs';
 
-const props = defineProps<Job>()
+const props = defineProps<Job & {addTagToFilter: (tag: string) => void}>()
 
 const requirements = [props.role, props.level, ...props.languages, ...props.tools]
 </script>
@@ -29,7 +29,7 @@ const requirements = [props.role, props.level, ...props.languages, ...props.tool
     </div>
     <div class="job-tags">
         <div v-for="requirement in requirements">
-          <JobTag :tag="requirement"/>
+          <JobTag :tag="requirement" :addTagToFilter="addTagToFilter"/>
         </div>
     </div>
   </article>
