@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import JobItem from './components/JobItem.vue';
+import SelectedTag from './components/SelectedTag.vue';
 import { getJobs } from './utils/getJobs';
 
 const jobs = await getJobs()
@@ -19,7 +20,7 @@ const addTagToFilter = (tag: string) => {
     <div class="content-container">
         <div class="filter">
             <div v-for="filterRequirement in filterRequirements">
-                <span>{{ filterRequirement }}</span>
+                <SelectedTag :tag="filterRequirement"/>
             </div>
         </div>
         <main>
