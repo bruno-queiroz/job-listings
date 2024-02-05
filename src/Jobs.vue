@@ -7,8 +7,7 @@ const jobs = await getJobs()
 
 const filterRequirements = ref<string[]>([])
 
-const a = (tag: string) => {
-    console.log(tag)
+const addTagToFilter = (tag: string) => {
     filterRequirements.value.push(tag)
 }
 </script>
@@ -26,7 +25,7 @@ const a = (tag: string) => {
         <main>
             <ul>
                 <li v-for="job in jobs">
-                    <JobItem v-bind="job" :a="a"/>
+                    <JobItem v-bind="job" :addTagToFilter="addTagToFilter"/>
                 </li>
             </ul>
         </main>
