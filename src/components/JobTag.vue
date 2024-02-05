@@ -1,11 +1,13 @@
 <script setup lang="ts">
+
 defineProps<{
     tag: string
+    addTagToFilter: (tag: string) => void;
 }>()
 </script>
 
 <template>
-    <button class="tag">
+    <button class="tag" @click="addTagToFilter(tag)">
         {{tag}}
     </button>
 </template>
