@@ -42,7 +42,8 @@ header{
 }
 
 main{
-  padding: 1rem;;
+  padding: 1rem;
+  padding-top: 4rem;
 }
 
 .content-container{
@@ -53,6 +54,10 @@ main{
     display: flex;
     gap: .75rem;
     background-color: white;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
     box-shadow: 7px 9px 16px -2px rgba(0,0,0,0.15);    
     border-radius: 5px;
     width: calc(85% - 1.50rem);
