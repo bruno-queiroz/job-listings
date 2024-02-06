@@ -2,14 +2,14 @@
 import { ref } from 'vue';
 import JobItem from './components/JobItem.vue';
 import SelectedTag from './components/SelectedTag.vue';
-import { getJobs } from './utils/getJobs';
+import { getJobs, type Job } from './utils/getJobs';
 
-const jobs = await getJobs()
+const filteredJobs = ref<Job[]>(await getJobs())
 
-const filterRequirements = ref<string[]>([])
+const filterRequirements = ref<Set<string>>(new Set())
 
 const addTagToFilter = (tag: string) => {
-    filterRequirements.value.push(tag)
+    filterRequirements.value.add(tag)
 }
 </script>
 
@@ -26,7 +26,7 @@ const addTagToFilter = (tag: string) => {
         </div>
         <main>
             <ul>
-                <li v-for="job in jobs">
+                <li v-for="job in filteredJobs">
                     <JobItem v-bind="job" :addTagToFilter="addTagToFilter"/>
                 </li>
             </ul>
