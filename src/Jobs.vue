@@ -10,6 +10,16 @@ const filterRequirements = ref<Set<string>>(new Set())
 
 const addTagToFilter = (tag: string) => {
     filterRequirements.value.add(tag)
+
+    filterJobs()
+}
+
+const filterJobs = () => {
+    filteredJobs.value = filteredJobs.value.filter(job => {
+        const jobRequirements = [job.level, job.role, ...job.languages, ...job.tools]
+
+        return [...filterRequirements.value].every(filterRequirement => jobRequirements.some(jobRequirement => jobRequirement === filterRequirement))
+    })
 }
 </script>
 
