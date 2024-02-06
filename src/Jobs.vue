@@ -21,6 +21,11 @@ const filterJobs = () => {
         return [...filterRequirements.value].every(filterRequirement => jobRequirements.some(jobRequirement => jobRequirement === filterRequirement))
     })
 }
+
+const clearFilter = async () => {
+    filterRequirements.value.clear()
+    filteredJobs.value = await getJobs()
+}
 </script>
 
 <template>
@@ -32,7 +37,7 @@ const filterJobs = () => {
             <div v-for="filterRequirement in filterRequirements">
                 <SelectedTag :tag="filterRequirement"/>
             </div>
-            <button class="clear-filter">Clear</button>
+            <button class="clear-filter" @click="clearFilter">Clear</button>
         </div>
         <main>
             <ul>
