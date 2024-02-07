@@ -26,6 +26,13 @@ const clearFilter = async () => {
     filterRequirements.value.clear()
     filteredJobs.value = await getJobs()
 }
+
+const removeFilter = async (tag: string) => {
+    filteredJobs.value = await getJobs()
+    filterRequirements.value.delete(tag)
+    
+    filterJobs()
+}
 </script>
 
 <template>
@@ -35,7 +42,7 @@ const clearFilter = async () => {
     <div class="content-container">
         <div class="filter">
             <div v-for="filterRequirement in filterRequirements">
-                <SelectedTag :tag="filterRequirement"/>
+                <SelectedTag :tag="filterRequirement" :remove-filter="removeFilter"/>
             </div>
             <button class="clear-filter" @click="clearFilter">Clear</button>
         </div>
