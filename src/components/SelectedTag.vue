@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import IconRemove from "./icons/IconRemove.vue"
-defineProps<{tag: string}>()
+defineProps<{tag: string, removeFilter: (tag: string) => Promise<void>}>()
 </script>
 
 <template>
@@ -8,7 +8,7 @@ defineProps<{tag: string}>()
     <div class="tag-name">
         {{ tag }}
     </div>
-    <button>
+    <button @click="removeFilter(tag)">
         <IconRemove/>
     </button>
   </div>
@@ -41,5 +41,9 @@ defineProps<{tag: string}>()
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     padding: .45rem;
+  }
+
+  button:hover{
+    background-color: hsl(180, 14%, 20%);
   }
 </style>
